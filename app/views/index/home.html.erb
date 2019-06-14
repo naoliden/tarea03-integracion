@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			table {
+			font-family: arial, sans-serif;
+			border-collapse: collapse;
+			width: 100%;
+			}
+
+			td, th {
+			border: 1px solid #dddddd;
+			text-align: left;
+			padding: 8px;
+			}
+
+			tr:nth-child(even) {
+			background-color: #dddddd;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<h2>TAREA 03 - SWAPI</h2>
+		<table border = "1">
+			<tr>
+				<th>Titulo</th>
+				<th>Episodio</th>
+				<th>Fecha de estreno</th>
+				<th>Director</th>
+				<th>Productores</th>
+			</tr>
+			<% @response.each do |film| %>
+
+			<tr>
+				<td><%=	link_to(film["title"], {:controller => 'index', :action => 'get_film', :_id => film["id"]}) %></td>
+				<td><%= film["episodeID"] %></td>
+				<td><%= film["releaseDate"] %></td>
+				<td><%= film["director"] %></td>
+				<td><%= film["producers"] %></td>
+			</tr>
+			<% end %>
+			</table>
+
+		<div class='col-md-4 text-center'>
+			<%= button_to "Volver al inicio", root_url, :method => :get%>
+		</div>
+
+	</body>
+</html>

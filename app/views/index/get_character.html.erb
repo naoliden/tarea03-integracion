@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+
+<html>
+	<body>
+
+		<h2>TAREA 03 - SWAPI</h2>
+		<table border = "1">
+			<tr>
+				<th>Nombre</th>
+				<th>Planeta de origen</th>
+				<th>Apariciones en peliculas</th>
+			</tr>
+			
+			<tr>
+				<td><%=	link_to(@response["name"],
+				 {:controller => 'index', :action => 'get_character', :_id => @response["id"].to_s}) %>
+				</td>
+				
+				<td><%= link_to(@response["homeworld"]["name"],
+				 {:controller => 'index', :action => 'get_planet', :_id => @response["homeworld"]["id"]})%>
+				</td>
+
+				<td>
+					<ul>
+						<% @response["filmConnection"]["films"].each do |item| %>
+							<li> <%= link_to(item["title"], {:action => 'get_film', :_id => item["id"].to_s}) %></li>
+						<% end %>
+					</ul>
+				</td>
+				
+			</tr>
+		</table>
+		<br>
+		<div class='col-md-4 text-center'>
+			<%= button_to "Volver al inicio", root_url, :method => :get%>
+		</div>
+
+	</body>
+</html>
