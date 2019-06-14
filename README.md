@@ -1,6 +1,7 @@
 # README
 
 Tarea 03 de taller de integración
+El link a la aplicación es: https://taller-integracion-tarea03.herokuapp.com/
 
 Se implementó todo.
 En los casos en que no existen resultados en la API SWAPI no se mostrará nada y quedará una celda vacía, como
