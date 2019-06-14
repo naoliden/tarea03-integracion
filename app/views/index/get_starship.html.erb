@@ -22,11 +22,7 @@
 					<ul>
 						<% @response["pilotConnection"]["pilots"].each do |item| %>
 							<li>
-							 	<% if @response["pilotConnection"]["pilots"].length != 0 then %>
-									<%= link_to(item["name"], {:controller => 'index', :action => 'get_character', :_id => item["id"].to_s}) %>
-								<% else %>
-									<%= "No hay info en SWAPI" %>
-								<% end %>
+								<%= link_to(item["name"], {:controller => 'index', :action => 'get_character', :_id => item["id"].to_s}) %>
 							</li>
 						<% end %>
 					</ul>
