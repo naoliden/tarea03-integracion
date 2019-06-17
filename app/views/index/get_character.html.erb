@@ -8,7 +8,15 @@
 		<table border = "1">
 			<tr>
 				<th>Nombre</th>
+				<th>Nacimiento</th>
+				<th>Genero</th>
+				<th>Color de Ojos</th>
+				<th>Color de Pelo</th>
+				<th>Color de Piel</th>
+				<th>Altura</th>
+				<th>Peso</th>
 				<th>Planeta de origen</th>
+				<th>Naves asociadas</th>
 				<th>Apariciones en peliculas</th>
 			</tr>
 			
@@ -16,11 +24,26 @@
 				<td><%=	link_to(@response["name"],
 				 {:controller => 'index', :action => 'get_character', :_id => @response["id"].to_s}) %>
 				</td>
+
+				<td><%= @response['birthYear'] %></td>
+				<td><%= @response['gender'] %></td>
+				<td><%= @response['eyeColor'] %></td>
+				<td><%= @response['hairColor'] %></td>
+				<td><%= @response['skinColor'] %></td>
+				<td><%= @response['height'] %></td>
+				<td><%= @response['mass'] %></td>
 				
 				<td><%= link_to(@response["homeworld"]["name"],
 				 {:controller => 'index', :action => 'get_planet', :_id => @response["homeworld"]["id"]})%>
 				</td>
 
+				<td>
+					<ul>
+						<% @response["starshipConnection"]["starships"].each do |item| %>
+							<li> <%= link_to(item["name"], {:action => 'get_starship', :_id => item["id"].to_s}) %></li>
+						<% end %>
+					</ul>
+				</td>
 				<td>
 					<ul>
 						<% @response["filmConnection"]["films"].each do |item| %>

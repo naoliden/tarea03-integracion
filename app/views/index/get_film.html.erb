@@ -10,6 +10,9 @@
 				<th>Titulo</th>
 				<th>Episodio</th>
 				<th>Opening Crawl</th>
+				<th>Fecha de Estreno</th>
+				<th>Productores</th>
+				<th>Director</th>
 				<th>Personajes</th>
 				<th>Planetas</th>
 				<th>Naves</th>
@@ -18,7 +21,9 @@
 				<td><%=	link_to(@film_response["title"], {:controller => 'index', :action => 'get_film', :_id => @film_response["id"].to_s}) %></td>
 				<td><%= @film_response["episodeID"] %></td>
 				<td><%= @film_response["openingCrawl"] %></td>
-
+				<td><%= @film_response["releaseDate"] %></td>
+				<td><%= @film_response["producers"]%></td>
+				<td><%= @film_response["director"]%></td>
 				<td>
 					<ul>
 						<% @film_response["characterConnection"]["characters"].each do |item| %>

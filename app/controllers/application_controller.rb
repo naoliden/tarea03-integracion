@@ -6,14 +6,15 @@ class ApplicationController < ActionController::Base
 
 
 	def get_film_query(_id)
-		film_query = "{ film(id: #{_id}) { id episodeID title openingCrawl characterConnection
-		 { characters { id name birthYear } } planetConnection { planets{ id name } } starshipConnection
+		film_query = "{ film(id: #{_id}) { id episodeID title openingCrawl releaseDate producers director characterConnection
+		 { characters { id name } } planetConnection { planets{ id name } } starshipConnection
 		 { starships{ id name } } } }"
 		return film_query
 	end
 
 	def get_character_query(_id)
-		character_query = "{ person(id: #{_id}){ id name homeworld{ name id } filmConnection{ films{ title id } } } }"
+		character_query = "{ person(id: #{_id}){ id name birthYear gender eyeColor hairColor skinColor height mass 
+		starshipConnection { starships { name id } } homeworld{ name id } filmConnection{ films{ title id } } } }"
 		return character_query
 	end
 
